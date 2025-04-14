@@ -67,9 +67,15 @@ Following the suspicious HTTP stream revealed:
 ## 📁 Object Extraction and Threat Confirmation
 
 - Using `File > Export Objects > HTTP`, the payload was successfully extracted.
+  <picture>![image](https://github.com/user-attachments/assets/ece45a3b-7a0f-4378-80da-f1bb2bd13662)</picture>
+
 - Upon inspection, the object was identified as a `.dll` (Dynamic Link Library).
+  <picture>![image](https://github.com/user-attachments/assets/d1d0e81b-1931-487c-8ad5-1df394743467)</picture>
+
 - The **SHA-256 hash** of the file was computed.
 - Cross-checking with **VirusTotal** confirmed the file was **malicious**, classified as a **Trojan**.
+  <picture>![image](https://github.com/user-attachments/assets/b5d4a399-c809-482c-85d7-e581c783e912)</picture>
+
 
 ---
 
