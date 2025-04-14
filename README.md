@@ -125,8 +125,9 @@ It is webmasterdev.com and IP is 184.168.98.68|
 |Q3.Q3 What is the associated IP address of the domain name?|
 |184.168.98.68|
 |Q4 How many HTTP packets are contained in the capture file?|
-|Under Statistics -> HTTP-> Packet Counter 847|
-|![image](https://github.com/user-attachments/assets/28ed0195-3f70-469c-9e26-a218b06edd40)|
+|Typed http in the response header, hit the enter key and counted them|
+|![image](https://github.com/user-attachments/assets/2fcb413a-329d-45bb-9ab3-b57e7f3a7b29)
+|
 |Q5 What is the relative path the victim accessed on the web server to request a file for download?|
 
 |![image](https://github.com/user-attachments/assets/0f201508-b035-47b4-b8d7-b5c74d86158d)  
@@ -139,14 +140,25 @@ image/gif. In the display filter, I entered http and hit the enter key, Right cl
 |![image](https://github.com/user-attachments/assets/c99682f1-6212-4491-b98d-2bcb34176acb)  
 MZ|
 |Q8 What command-line utility or program was used by the victim to download the file?|
-|WindowsPowerShell/5.1.22621.963  
+|WindowsPowerShell 
 ![image](https://github.com/user-attachments/assets/b04e1014-abb7-4f54-b140-4148d8234333)
 |
 |Q9 What is the sha256 hash of the downloaded file?|
 |9b8ffdc8ba2b2caa485cca56a82b2dcbd251f65fb30bc88f0ac3da6704e4d3c6  
 ![image](https://github.com/user-attachments/assets/6b687774-127f-480d-9611-85ff725673ae)|
 |Q10 Submit the uncovered hash to VirusTotal. Based on the popular threat label and tags, what type of malware did the endpoint get infected with?|
-||
+|pikabot  
+![image](https://github.com/user-attachments/assets/aff4ef7d-0486-4ca3-81c9-b8008e25dc65)
+|
+|Q11 What protocol makes up the majority of UDP packets?|
+|DNS|
+
+|Q12 Look at the domain names that were queried within the capture. In defanged format, what is the base domain name that is continually queried?|
+|steasteel[.]net  
+In the Display filter, I typed in dns and hit the enter key. I then manually observed the frequent domain nammes. Got it and used cybersheff tool to defang it.|
+
+|Q13 Read up on MITRE ATT&CK ID T1071.004. What is the attack technique we re likely seeing in the PCAP file often known as?|
+|DNS tunneling|
 
 
 
