@@ -3,9 +3,11 @@
 ## 🏢 Organization: BulbaTech Innovations
 
 **Incident Trigger:**  
-An alert was raised due to abnormal traffic patterns and repeated outbound queries from an external-facing LAN endpoint (`172.16.1.16`). 
+An alert was raised due to abnormal traffic patterns and repeated outbound queries from an external-facing LAN endpoint (`172.16.1.16`).  
+
 PCAP URL: https://challenges.malwarecube.com/#/c/7265ec1c-9773-4c7c-9ed4-2ea26e19f346  
 PCAP Provided By https://www.malware-traffic-analysis.net/
+
 ---
 
 ## 🎯 Objective
@@ -24,14 +26,12 @@ Initial triage involved navigating Wireshark's `Statistics` menu to review **Pro
 
 
 - **Conversations & Endpoints:**  
-  IP address `172.16.1.16` had ongoing communication with external entities. This host, identified as external-facing on the LAN, was involved in persistent and repetitive queries — suggesting it may be compromised or targeted.
+  IP address `172.16.1.16` had ongoing communication with external entities. This host, identified as external-facing IP on the LAN, was involved in persistent and repetitive queries — suggesting it may be compromised or targeted.
+  Detailed insights from the conversation view revealed that internal host `172.16.1.16` was engaged in persistent communication with an external entity...
   <picture>![image](https://github.com/user-attachments/assets/cdb9dc04-6e61-4257-9c8c-495ec20d9e66)</picture>
   <p align="center">
     <strong>Figure 2 – Conversation Screenshot pop-up </strong>
 </p>
-
-
-Detailed insights from the conversation view revealed that internal host `172.16.1.16` was engaged in persistent communication with an external entity...
 
   <picture>![image](https://github.com/user-attachments/assets/dcfc72fe-592a-4253-a1d0-a4fdeb472443)</picture>  
   <p align="center">
@@ -46,7 +46,7 @@ Navigating to: Statistics > HTTP > Requests
 
 The following was observed:
 - A suspicious **HTTP GET request** was made to IP `162.252.172.54`.
-- **DNS resolution was bypassed** — direct IP access suggests evasion tactics.
+- Direct IP usage is suggestive of an IoC, possibly an evasion tactics.
 - The requested URI was obscure and non-standard.
 
 <picture>![image](https://github.com/user-attachments/assets/e98974e2-0579-45e6-a298-eedd6be704e6)</picture>
@@ -65,7 +65,7 @@ Following the suspicious HTTP stream revealed:
 
 > These characteristics strongly indicated the payload was an **executable masquerading as a benign image.**
 </picture>![image](https://github.com/user-attachments/assets/87b4c237-6ef5-49fb-aa07-5fcd2141f4dd)</picture>
-
+This is likely a potential payload and further investigation is carried out in the next section.
 ---
 
 ## 📁 Object Extraction and Threat Confirmation
