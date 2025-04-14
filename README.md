@@ -4,7 +4,6 @@
 
 **Incident Trigger:**  
 An alert was raised due to abnormal traffic patterns and repeated outbound queries from an external-facing LAN endpoint (`172.16.1.16`). 
-
 PCAP URL: https://challenges.malwarecube.com/#/c/7265ec1c-9773-4c7c-9ed4-2ea26e19f346  
 PCAP Provided By https://www.malware-traffic-analysis.net/
 ---
