@@ -3,8 +3,10 @@
 ## 🏢 Organization: BulbaTech Innovations
 
 **Incident Trigger:**  
-An alert was raised due to abnormal traffic patterns and repeated outbound queries from an external-facing LAN endpoint (`172.16.1.16`).
+An alert was raised due to abnormal traffic patterns and repeated outbound queries from an external-facing LAN endpoint (`172.16.1.16`). 
 
+PCAP URL: https://challenges.malwarecube.com/#/c/7265ec1c-9773-4c7c-9ed4-2ea26e19f346  
+PCAP Provided By https://www.malware-traffic-analysis.net/
 ---
 
 ## 🎯 Objective
@@ -25,9 +27,17 @@ Initial triage involved navigating Wireshark's `Statistics` menu to review **Pro
 - **Conversations & Endpoints:**  
   IP address `172.16.1.16` had ongoing communication with external entities. This host, identified as external-facing on the LAN, was involved in persistent and repetitive queries — suggesting it may be compromised or targeted.
   <picture>![image](https://github.com/user-attachments/assets/cdb9dc04-6e61-4257-9c8c-495ec20d9e66)</picture>
-  <picture>![image](https://github.com/user-attachments/assets/dcfc72fe-592a-4253-a1d0-a4fdeb472443)</picture>
+  <p align="center">
+    <strong>Figure 2 – Conversation Screenshot pop-up </strong>
+</p>
 
 
+Detailed insights from the conversation view revealed that internal host `172.16.1.16` was engaged in persistent communication with an external entity...
+
+  <picture>![image](https://github.com/user-attachments/assets/dcfc72fe-592a-4253-a1d0-a4fdeb472443)</picture>  
+  <p align="center">
+    <strong>Figure 2 – Screenshot of Endpoints pop-up </strong>
+</p>
 
 ---
 
@@ -35,17 +45,12 @@ Initial triage involved navigating Wireshark's `Statistics` menu to review **Pro
 
 Navigating to: Statistics > HTTP > Requests  
 
-
-
-
 The following was observed:
 - A suspicious **HTTP GET request** was made to IP `162.252.172.54`.
 - **DNS resolution was bypassed** — direct IP access suggests evasion tactics.
 - The requested URI was obscure and non-standard.
 
 <picture>![image](https://github.com/user-attachments/assets/e98974e2-0579-45e6-a298-eedd6be704e6)</picture>
-
-
 
 ---
 
@@ -109,4 +114,43 @@ The investigation confirms that a **malicious DLL file** was delivered via a dec
 **Immediate containment and further environment-wide threat detection are advised.**
 
 ---
+| Questions and Answers |
+|-----------------------|
+|Q1. How many total packets are in the wireshark_challenge.pcap packet capture?|
+|Navigate to Statistics --> Capture FIle Properties and it is 39106  
+![image](https://github.com/user-attachments/assets/7ad5ff83-7c5b-442d-84dc-3ad587077202)|
+|Q2. What was the first domain name queried and resolved in the capture?|
+|Type in DNS in the Display filter and hit Enter Key. Scroll up to the top of the query.In the Info section, you will see the first 'Standard query response...'Click on it and go to Domain Names System below, Click on Answers.  
+It is webmasterdev.com and IP is 184.168.98.68|
+|Q3.Q3 What is the associated IP address of the domain name?|
+|184.168.98.68|
+|Q4 How many HTTP packets are contained in the capture file?|
+|Under Statistics -> HTTP-> Packet Counter 847|
+|![image](https://github.com/user-attachments/assets/28ed0195-3f70-469c-9e26-a218b06edd40)|
+|Q5 What is the relative path the victim accessed on the web server to request a file for download?|
+
+|![image](https://github.com/user-attachments/assets/0f201508-b035-47b4-b8d7-b5c74d86158d)  
+/9GQ5A8/6ctf5JL  
+This was found by navigating to Statistics->HTTP->Requests|
+|Q6 Based on the response header, what file type or format does the web server claim the downloaded file to be?|
+|![image](https://github.com/user-attachments/assets/a2b8b187-c199-4912-bec6-2d5562366140)  
+image/gif. In the display filter, I entered http and hit the enter key, Right click and Follow Http Stream|
+|Q7 However, what is the actual file signature or magic bytes contained in the file?|
+|![image](https://github.com/user-attachments/assets/c99682f1-6212-4491-b98d-2bcb34176acb)  
+MZ|
+|Q8 What command-line utility or program was used by the victim to download the file?|
+|WindowsPowerShell/5.1.22621.963  
+![image](https://github.com/user-attachments/assets/b04e1014-abb7-4f54-b140-4148d8234333)
+|
+|Q9 What is the sha256 hash of the downloaded file?|
+|9b8ffdc8ba2b2caa485cca56a82b2dcbd251f65fb30bc88f0ac3da6704e4d3c6  
+![image](https://github.com/user-attachments/assets/6b687774-127f-480d-9611-85ff725673ae)|
+|Q10 Submit the uncovered hash to VirusTotal. Based on the popular threat label and tags, what type of malware did the endpoint get infected with?|
+||
+
+
+
+
+
+
 
